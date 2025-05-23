@@ -3,7 +3,7 @@ from pages.login_page import LoginPage
 
 @pytest.mark.login
 @pytest.mark.parametrize("username,password", [
-    ("testuser@123", "1234567890"),
+    ("aayush.batra@simplefixit.com", "password"),
     ("invalid_user", "invalid_pass")
 ])
 def test_login(driver, username, password):
