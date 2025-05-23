@@ -1,17 +1,18 @@
-name: Run Selenium Tests on Windows
+name: Scheduled Selenium Tests
 
 on:
-  workflow_dispatch:
   schedule:
-    - cron: '30 9 * * 1-5'  # 09:30 UTC (3:00 PM IST) Monday–Friday
+    # Run at 09:30 UTC (3:00 PM IST) Monday–Friday
+    - cron: '30 9 * * 1-5'
+  workflow_dispatch:
 
 jobs:
-  selenium:
+  test_and_generate_report:
     runs-on: windows-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -23,12 +24,13 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run tests and generate HTML report
+      - name: Run Pytest and generate HTML report
         run: |
-          mkdir reports
+          if (!(Test-Path reports)) { New-Item -ItemType Directory -Path reports }
           pytest --html=reports/report.html --self-contained-html
+        shell: pwsh
 
-      - name: Upload report
+      - name: Upload HTML report artifact
         uses: actions/upload-artifact@v4
         with:
           name: selenium-test-report
