@@ -38,13 +38,13 @@ jobs:
       - name: Send test report via email
         uses: dawidd6/action-send-mail@v3
         with:
-          server_address: smtp.gmail.com
+          server_address: smtp.zoho.com
           server_port: 465
           secure: true
-          username: ${{ secrets.EMAIL_USERNAME }}
-          password: ${{ secrets.EMAIL_PASSWORD }}
+          username: ${{ secrets.EMAIL_USERNAME }}    # e.g. reports@yourdomain.com
+          password: ${{ secrets.EMAIL_PASSWORD }}    # App-specific password
           subject: Selenium Test Report
-          to: shubham.kohli@simplefixit.com
+          to: shubhamkohli2002@gmail.com
           from: ${{ secrets.EMAIL_USERNAME }}
           body: |
             Hi,
