@@ -36,19 +36,19 @@ jobs:
           name: selenium-test-report
           path: reports/report.html
 
-      - name: Send test report via email (using send-email)
-        uses: martinbeentjes/send-email@v1.3.2
+      - name: Send test report via email
+        uses: dawidd6/action-send-mail@v3
         with:
-          smtp-server: smtp.gmail.com                  # Use smtp.office365.com for Outlook
-          smtp-port: 465
-          smtp-secure: true
-          smtp-username: ${{ secrets.EMAIL_USERNAME }}
-          smtp-password: ${{ secrets.EMAIL_PASSWORD }}
+          server_address: smtp.gmail.com                   # Or smtp.office365.com, smtp.zoho.com, etc.
+          server_port: 465                                 # Use 587 for STARTTLS with secure: false
+          secure: true                                     # true for SSL (465), false for STARTTLS (587)
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+          subject: Selenium Test Report
           to: shubhamkohli2002@gmail.com
           from: ${{ secrets.EMAIL_USERNAME }}
-          subject: Selenium Test Report
           body: |
-            Hello,
+            Hi,
 
             Please find the attached Selenium test report from the scheduled run.
 
