@@ -45,7 +45,7 @@ jobs:
           username: ${{ secrets.EMAIL_USERNAME }}
           password: ${{ secrets.EMAIL_PASSWORD }}
           subject: Selenium Test Report
-          to: recipient@example.com  # <-- Replace with actual recipient(s)
+          to: aayush.batra@simplefixit.com  # <-- Replace with actual recipient(s)
           from: ${{ secrets.EMAIL_USERNAME }}
           body: |
             Hi,
