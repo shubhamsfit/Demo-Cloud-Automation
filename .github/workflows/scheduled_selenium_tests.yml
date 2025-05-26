@@ -44,7 +44,7 @@ jobs:
           username: ${{ secrets.EMAIL_USERNAME }}
           password: ${{ secrets.EMAIL_PASSWORD }}
           subject: Selenium Test Report
-          to: shubhamkohli2002@gmail.com
+          to: shubham.kohli@simplefixit.com
           from: ${{ secrets.EMAIL_USERNAME }}
           body: |
             Hi,
