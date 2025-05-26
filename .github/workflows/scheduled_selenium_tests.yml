@@ -2,7 +2,6 @@ name: Scheduled Selenium Tests
 
 on:
   schedule:
-    # Run at 09:30 UTC (3:00 PM IST) Monday–Friday
     - cron: '30 9 * * 1-5'
   workflow_dispatch:
 
@@ -15,7 +14,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
@@ -39,9 +38,9 @@ jobs:
       - name: Send test report via email
         uses: dawidd6/action-send-mail@v3
         with:
-          server_address: smtp.gmail.com                   # Or smtp.office365.com, smtp.zoho.com, etc.
-          server_port: 465                                 # Use 587 for STARTTLS with secure: false
-          secure: true                                     # true for SSL (465), false for STARTTLS (587)
+          server_address: smtp.gmail.com
+          server_port: 465
+          secure: true
           username: ${{ secrets.EMAIL_USERNAME }}
           password: ${{ secrets.EMAIL_PASSWORD }}
           subject: Selenium Test Report
