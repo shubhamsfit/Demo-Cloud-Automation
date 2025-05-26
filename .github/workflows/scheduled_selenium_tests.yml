@@ -40,11 +40,12 @@ jobs:
         uses: dawidd6/action-send-mail@v3
         with:
           server_address: ${{ secrets.SMTP_SERVER }}
-          server_port: 465
+          server_port: 587
+          secure: false  # Use TLS (STARTTLS). Set to true if using port 465 (SSL)
           username: ${{ secrets.EMAIL_USERNAME }}
           password: ${{ secrets.EMAIL_PASSWORD }}
           subject: Selenium Test Report
-          to: aayush.batra@simplefixit.com  # ← Replace with the real recipient
+          to: recipient@example.com  # <-- Replace with actual recipient(s)
           from: ${{ secrets.EMAIL_USERNAME }}
           body: |
             Hi,
