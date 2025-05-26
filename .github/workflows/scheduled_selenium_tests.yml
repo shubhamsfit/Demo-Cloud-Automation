@@ -44,7 +44,7 @@ jobs:
           username: ${{ secrets.EMAIL_USERNAME }}    # e.g. reports@yourdomain.com
           password: ${{ secrets.EMAIL_PASSWORD }}    # App-specific password
           subject: Selenium Test Report
-          to: shubham.kohli@simplefixit.com, priyanka@simplefixit.com, shubhamkohli2002@gmail.com
+          to: shubham.kohli@simplefixit.com, shubhamkohli2002@gmail.com
           from: ${{ secrets.EMAIL_USERNAME }}
           body: |
             Hi,
