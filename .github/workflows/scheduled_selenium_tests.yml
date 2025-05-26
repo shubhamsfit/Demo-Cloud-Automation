@@ -36,14 +36,14 @@ jobs:
           name: selenium-test-report
           path: reports/report.html
 
-      - name: Send test report via email
-        uses: dawidd6/action-send-mail@v3
+      - name: Send test report via email (using mirromutth/email)
+        uses: mirromutth/email@v1
         with:
-          server_address: smtp.gmail.com  # ✅ Use smtp.office365.com or smtp.sendgrid.net if needed
-          server_port: 465                # ✅ For Office365 use 587 and secure: false
-          secure: true                    # true for SSL (port 465), false for TLS (port 587)
-          username: ${{ secrets.EMAIL_USERNAME }}
-          password: ${{ secrets.EMAIL_PASSWORD }}
+          server_address: smtp.gmail.com                     # Replace if using Outlook or SendGrid
+          server_port: 465
+          secure: true                                       # SSL (true) or TLS (false for port 587)
+          username: ${{ secrets.EMAIL_USERNAME }}           # Full email (e.g. you@gmail.com)
+          password: ${{ secrets.EMAIL_PASSWORD }}           # App password (no spaces)
           subject: Selenium Test Report
           to: shubhamkohli2002@gmail.com
           from: ${{ secrets.EMAIL_USERNAME }}
